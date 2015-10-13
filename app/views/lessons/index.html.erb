@@ -1,0 +1,9 @@
+<h1>Table of Contents</h1>
+
+<ul>
+  <% @lessons.each do |lesson| %>
+    <li><%= link_to lesson.title, lesson %></li>
+  <% end %>
+</ul>
+
+<%= link_to 'new', new_lesson_path %>

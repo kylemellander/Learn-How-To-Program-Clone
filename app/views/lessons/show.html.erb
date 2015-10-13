@@ -1,0 +1,15 @@
+<% content_for(:title, "#{@lesson.title} - ") %>
+
+<h1><%= @lesson.title %></h1>
+<p><%= link_to 'edit', edit_lesson_path(@lesson) %> | <%= link_to 'delete', lesson_path(@lesson), data: {confirm: "Are you sure?", method: "delete"} %></p>
+<p><%= @lesson.content %></p>
+
+<p>
+  <% if @lesson.prev %>
+    <%= link_to "Previous Lesson", @lesson.prev%> |
+  <% end %>
+  <%= link_to "Home", lessons_path %>
+  <% if @lesson.next %>
+    | <%= link_to "Next Lesson", @lesson.next%>
+  <% end %>
+</p>
