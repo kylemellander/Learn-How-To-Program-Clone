@@ -10,5 +10,11 @@
   <%= f.label :sort_order %>
   <%= f.text_field :sort_order %>
 
+  <%= f.label :section %>
+  <%= f.collection_select :section_id, Section.all, :id, :title %>
+
+  <label for="add_section">Add A Section</label>
+  <input type="text" name="lesson[add_section]" id="add_section">
+
   <%= f.submit %>
 <% end %>

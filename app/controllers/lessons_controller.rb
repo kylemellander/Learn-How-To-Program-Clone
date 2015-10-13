@@ -14,6 +14,10 @@ class LessonsController < ApplicationController
 
   def create
     @lesson = Lesson.new(lesson_params)
+    if params[:lesson][:add_section] != nil && params[:lesson][:add_section] != ""
+      section = Section.create(title: params[:lesson][:add_section])
+      @lesson.section_id = section.id
+    end
     if @lesson.save
       redirect_to @lesson
     else
@@ -43,7 +47,7 @@ class LessonsController < ApplicationController
   private
 
   def lesson_params
-    params.require(:lesson).permit(:title, :content, :sort_order)
+    params.require(:lesson).permit(:title, :content, :sort_order, :section_id)
   end
 
 end
